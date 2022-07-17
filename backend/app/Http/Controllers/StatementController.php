@@ -18,7 +18,23 @@ class StatementController extends Controller
      */
     public function index()
     {
-        return Statement::select('id', 'bank_account', 'statement_date', 'type', 'particulars', 'amount')->get();
+        $query = Statement::from('Statements as s')
+                        ->join('particulars as p', 's.particulars', '=', 'p.id')
+                        //->where('bank_account', '=', $accountId)
+                        ->orderBy('statement_date')
+                        ->orderBy('id')
+                        ->select('s.*', 'p.particular as pparticular');
+                        // if ($particulars_search != "") {
+                        //     $query->where('s.particulars', '=', $particulars_search);
+                        // }
+                        // if ($cr_dr_search != "") {
+                        //     $query->where('s.cr_dr', '=', $cr_dr_search);
+                        // }
+        $data = $query->get();
+        //->paginate(20);
+
+        return $data;
+        //return Statement::select('id', 'bank_account', 'statement_date', 'type', 'particulars', 'amount')->get();
     }
 
     /**

@@ -29,6 +29,7 @@ function App() {
               <Route path="/statement/create" element={<CreateStatement />} />
               <Route path="/statement/edit/:id" element={<EditStatement />} />
               <Route path="/statements" element={<StatementList />} />
+              <Route path="/" element={<StatementList />} />
             </Routes>
           </Col>
         </Row>

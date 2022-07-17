@@ -86,7 +86,7 @@ export default function List() {
                       return (
                         <tr key={key}>
                           <td>{key + 1}</td>
-                          <td>{row.particulars}</td>
+                          <td>{row.pparticular}</td>
                           <td>{row.type === "Debit" ? row.amount : ""}</td>
                           <td>{row.type === "Credit" ? row.amount : ""}</td>
                           <td>{row.type === "Credit"? (creditAmount += row.amount, balance += row.amount) : (debitAmount += row.amount, balance -= row.amount)}</td>
